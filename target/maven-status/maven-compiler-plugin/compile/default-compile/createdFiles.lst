@@ -1,0 +1,6 @@
+app\SpringBootConfiguration.class
+app\model\User.class
+app\model\Pago.class
+app\controller\CompraController.class
+app\service\PagoService.class
+app\model\Produto.class
