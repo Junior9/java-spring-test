@@ -1,6 +1,8 @@
 package basic_teste_pay_shop.controller;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.List;
@@ -19,6 +21,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.RequestBuilder;
+import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
@@ -71,11 +75,19 @@ public class ProdutoControllerTest {
 		String produtoJson = result.getResponse().getContentAsString();
 		produto = om.readValue(produtoJson, Produto.class);
 		Assert.assertThat(produto, Matchers.notNullValue());
-	
 	}
+	
 	@Test
-	public void getProdutos() {
+	public void save() throws Exception {
 		
+		mockMvc.perform( 
+					post("/api/produto/save")
+						.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+						.sessionAttr("produto", new Produto(1L, "Pasta", "Pasta boa", 10D))
+						
+				)
+				//.andExpect(status().isOk())
+				//.andExpect(model().attribute("produto.nome", Matchers.equalTo("Pasta")))
+				;
 	}
-	
 }

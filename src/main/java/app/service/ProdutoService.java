@@ -15,12 +15,12 @@ public class ProdutoService {
 	private ProdutoRepository repository;
 	
 	public List<Produto> lista() {
-		// TODO Auto-generated method stub
-		return null;
+		return (List<Produto>) repository.findAll();
 	}
 
 	public Produto get(Long id) {
 		return repository.findById(id).get(); 
+		//return new Produto(1L, "Chock", "My best choc", 5D);
 	}
 
 	public List<Produto> todos() {

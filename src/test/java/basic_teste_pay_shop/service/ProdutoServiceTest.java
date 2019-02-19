@@ -61,6 +61,19 @@ public class ProdutoServiceTest {
 		Assert.assertThat(produto.getId(),Matchers.equalTo(1L));
 		Assert.assertThat(produto.getNome(),Matchers.equalTo("Sabao"));
 	}
+	
+	/*@Test
+	public void getProdutoNaoEncontrado() {
+
+		Mockito.when(produtoRepository.findById(1L))
+				.then  ;
+	
+		produto = produtoService.get(1L);
+		Assert.assertThat(produto, Matchers.notNullValue());
+		Assert.assertThat(produto.getId(),Matchers.equalTo(1L));
+		Assert.assertThat(produto.getNome(),Matchers.equalTo("Sabao"));
+	}*/
+	
 	@Test
 	public void getProdutos() {
 
